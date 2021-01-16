@@ -24,6 +24,9 @@
         </article>
       </li>
     </ul>
+    <div class="divide-y divide-gray-200">
+      <p class="py-5 text-center text-gray-900 font-medium">© 2019-present by Le Minh Tri (@ansidev).</p>
+    </div>
   </div>
 </template>
 
