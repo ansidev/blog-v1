@@ -1,5 +1,5 @@
 // @ts-check
-const { getPosts } = require('./getPosts')
+const { getPosts, getPages } = require('./getPosts')
 
 /**
  * @type {import('vitepress').UserConfig}
@@ -18,6 +18,9 @@ module.exports = {
     ]
   ],
   customData: {
-    posts: getPosts()
+    posts: [
+      ...getPosts(),
+      ...getPages()
+    ]
   }
 }

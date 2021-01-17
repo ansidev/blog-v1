@@ -7,8 +7,8 @@
       <p class="text-lg leading-7 text-gray-500">{{ $frontmatter.subtext }}</p>
     </div>
     <ul class="divide-y divide-gray-200">
-      <li class="py-12" v-for="{ title, href, date, excerpt } of $site.customData.posts">
-        <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+      <li class="py-12" v-for="{ title, href, date, excerpt, type } of $site.customData.posts">
+        <article v-if="type === 'post'" class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
           <Date :date="date" />
           <div class="space-y-5 xl:col-span-3">
             <div class="space-y-6">
