@@ -1,5 +1,5 @@
 <template>
-  <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" :data-width="width" :data-numposts="numberOfPosts" />
+  <div class="fb-comments" :data-href="postURL" :data-width="width" :data-numposts="numberOfPosts" />
 </template>
 
 <script setup>
@@ -7,6 +7,14 @@ import { defineProps, onMounted } from 'vue'
 import { useSiteData } from 'vitepress'
 
 const initFacebookCommentPlugin = (pluginConfig) => {
+  if (window.FB) {
+    window.FB.init({
+      appId      : pluginConfig.appId,
+      status     : true,
+      xfbml      : true,
+      version    : pluginConfig.version
+    })
+  }
   let externalScript = document.createElement('script')
   externalScript.setAttribute('async', '')
   externalScript.setAttribute('defer', '')
@@ -17,6 +25,11 @@ const initFacebookCommentPlugin = (pluginConfig) => {
 }
 
 const props = defineProps({
+  /**
+   * Post URL
+   * { string }
+   */
+  postURL: String,
   /**
    * Width of comment container
    * { number, string }
@@ -29,7 +42,7 @@ const props = defineProps({
   numberOfPosts: Number,
 })
 
-const pluginConfig = useSiteData().value.customData.plugins.facebookComment
+const pluginConfig = useSiteData().value.themeConfig.facebookComment
 
 onMounted(() => initFacebookCommentPlugin(pluginConfig))
 </script>

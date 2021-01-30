@@ -29,9 +29,10 @@ module.exports = {
     posts: [
       ...getPosts(),
       ...getPages()
-    ],
-    plugins: {
-      facebookComment
-    }
+    ]
   },
+  themeConfig: {
+    baseURL: 'https://ansidev.xyz',
+    facebookComment
+  }
 }

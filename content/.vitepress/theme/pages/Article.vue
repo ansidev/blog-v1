@@ -15,7 +15,7 @@
       <Author />
       <div class="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
         <Content class="prose max-w-none pt-10 pb-8" />
-        <FacebookComment :number-of-posts="5" :width="762" />
+        <FacebookComment v-if="isCommentPluginLoaded" :number-of-posts="5" width="100%" :post-url="postURL" />
       </div>
 
       <footer
@@ -45,19 +45,27 @@
 import Date from '../components/Date.vue'
 import FacebookComment from '../components/FacebookComment.vue'
 import Author from '../components/Author.vue'
-import { computed } from 'vue'
+import { computed, ref, onMounted, nextTick } from 'vue'
 import { useFrontmatter, useSiteData, useRoute } from 'vitepress'
 
 const data = useFrontmatter()
 const route = useRoute()
 const posts = useSiteData().value.customData.posts
+const baseURL = useSiteData().value.themeConfig.baseURL
 
 function findCurrentIndex() {
   return posts.findIndex(p => p.href === route.path)
 }
 
 // use the customData date which contains pre-resolved date info
+const isCommentPluginLoaded = ref(false)
+const postURL = computed(() => `${baseURL}${route.path}`)
 const date = computed(() => posts[findCurrentIndex()].date)
 const nextPost = computed(() => posts[findCurrentIndex() - 1])
 const prevPost = computed(() => posts[findCurrentIndex() + 1])
+
+onMounted(async () => {
+  await nextTick()
+  isCommentPluginLoaded.value = true
+})
 </script>
