@@ -44,8 +44,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vitepress'
-import Home from './Home.vue'
-import Article from './Article.vue'
+import Home from './pages/Home.vue'
+import Article from './pages/Article.vue'
 
 const route = useRoute()
 const isIndex = computed(() => route.path.replace(/index.html$/, '') === '/')

@@ -1,5 +1,6 @@
 <template>
   <article class="xl:divide-y xl:divide-gray-200">
+    <div id="fb-root"></div>
     <header class="pt-6 xl:pb-10 space-y-1 text-center">
       <Date :date="date" />
       <h1
@@ -14,6 +15,7 @@
       <Author />
       <div class="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
         <Content class="prose max-w-none pt-10 pb-8" />
+        <FacebookComment :number-of-posts="5" :width="762" />
       </div>
 
       <footer
@@ -40,8 +42,9 @@
 </template>
 
 <script setup>
-import Date from './Date.vue'
-import Author from './Author.vue'
+import Date from '../components/Date.vue'
+import FacebookComment from '../components/FacebookComment.vue'
+import Author from '../components/Author.vue'
 import { computed } from 'vue'
 import { useFrontmatter, useSiteData, useRoute } from 'vitepress'
 

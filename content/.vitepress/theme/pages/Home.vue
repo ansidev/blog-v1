@@ -31,5 +31,5 @@
 </template>
 
 <script setup>
-import Date from './Date.vue'
+import Date from '../components/Date.vue'
 </script>
