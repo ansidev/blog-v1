@@ -1,5 +1,6 @@
 // @ts-check
 const { getPosts, getPages } = require('./getPosts')
+const { baseURL } = require('./plugins/site')
 const facebookComment = require('./plugins/facebookComment')
 
 /**
@@ -32,7 +33,7 @@ module.exports = {
     ]
   },
   themeConfig: {
-    baseURL: 'https://ansidev.xyz',
+    baseURL,
     facebookComment
   }
 }
