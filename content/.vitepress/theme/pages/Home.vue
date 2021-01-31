@@ -7,7 +7,7 @@
       <p class="text-lg leading-7 text-gray-500">{{ $frontmatter.subtext }}</p>
     </div>
     <ul class="divide-y divide-gray-200">
-      <li class="py-12" v-for="{ title, href, date, excerpt, type } of $site.customData.posts">
+      <li :class="[type === 'post' ? 'py-3' : '']" v-for="{ title, href, date, excerpt, type } of $site.customData.posts">
         <article v-if="type === 'post'" class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
           <Date :date="date" />
           <div class="space-y-5 xl:col-span-3">
@@ -24,9 +24,7 @@
         </article>
       </li>
     </ul>
-    <div class="divide-y divide-gray-200">
-      <p class="py-5 text-center text-gray-900 font-medium">© 2019-present by Le Minh Tri (@ansidev).</p>
-    </div>
+    <p class="py-5 text-center text-gray-900 font-medium">© 2019-present by Le Minh Tri (@ansidev).</p>
   </div>
 </template>
 
