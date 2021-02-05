@@ -12,6 +12,8 @@ tags:
   - alacritty
   - switch theme
 ---
+Bài viết dành cho ai đang dùng phần mềm Alacritty và muốn thay đổi theme.
+---
 
 # Tại sao mình dùng Alacritty?
 
