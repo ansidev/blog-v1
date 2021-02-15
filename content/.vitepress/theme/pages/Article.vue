@@ -1,6 +1,6 @@
 <template>
   <article class="xl:divide-y xl:divide-gray-200">
-    <div id="fb-root"></div>
+    <div id="fb-root" />
     <header class="pt-6 xl:pb-10 space-y-1 text-center">
       <Date :date="date" />
       <h1
@@ -14,8 +14,8 @@
     >
       <Author />
       <div class="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
-        <Content class="prose max-w-none pt-10 pb-8" />
-        <FacebookComment v-if="isCommentPluginLoaded" :number-of-posts="5" width="100%" :post-url="postURL" />
+        <Content class="theme-ansidev-content prose max-w-none pt-10 pb-8" />
+        <FacebookComment :number-of-posts="5" width="100%" :post-url="postURL" />
       </div>
 
       <footer
@@ -34,6 +34,10 @@
           </div>
         </div>
         <div class="pt-8">
+          <h2 class="text-xs tracking-wide uppercase text-gray-500">Share</h2>
+          <Sharing :url="postURL" :text="$page.title" />
+        </div>
+        <div class="pt-8">
           <a class="link" href="/">← Back to the blog</a>
         </div>
       </footer>
@@ -42,11 +46,13 @@
 </template>
 
 <script setup>
-import Date from '../components/Date.vue'
-import FacebookComment from '../components/FacebookComment.vue'
-import Author from '../components/Author.vue'
-import { computed, ref, onMounted, nextTick } from 'vue'
+import { computed } from 'vue'
 import { useFrontmatter, useSiteData, useRoute } from 'vitepress'
+import Date from '../components/Date.vue'
+import Author from '../components/Author.vue'
+import FacebookComment from '../../plugins/facebookComment/components/FacebookComment.vue'
+import Sharing from '../../plugins/share/components/Sharing.vue'
+// import { directive as MediumZoom } from '../../plugins/mediumZoom/MediumZoom'
 
 const data = useFrontmatter()
 const route = useRoute()
@@ -58,14 +64,8 @@ function findCurrentIndex() {
 }
 
 // use the customData date which contains pre-resolved date info
-const isCommentPluginLoaded = ref(false)
 const postURL = computed(() => `${baseURL}${route.path}`)
 const date = computed(() => posts[findCurrentIndex()].date)
 const nextPost = computed(() => posts[findCurrentIndex() - 1])
 const prevPost = computed(() => posts[findCurrentIndex() + 1])
-
-onMounted(async () => {
-  await nextTick()
-  isCommentPluginLoaded.value = true
-})
 </script>

@@ -1,7 +1,10 @@
 // @ts-check
+const { getPluginConfigs } = require('./getPluginConfigs')
 const { getPosts, getPages } = require('./getPosts')
 const { baseURL } = require('./plugins/site')
-const facebookComment = require('./plugins/facebookComment')
+const { appId } = require('./configs/facebookComment')
+
+const plugins = getPluginConfigs('./configs')
 
 /**
  * @type {import('vitepress').UserConfig}
@@ -14,7 +17,7 @@ module.exports = {
       'meta',
       {
         property: 'fb:app_id',
-        content: facebookComment.appId
+        content: appId
       }
     ],
     [
@@ -34,6 +37,6 @@ module.exports = {
   },
   themeConfig: {
     baseURL,
-    facebookComment
+    plugins
   }
 }

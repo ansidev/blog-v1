@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const matter = require('gray-matter')
 
-exports.getPosts = function getPosts(asFeed = false) {
-  const postDir = path.resolve(__dirname, '../posts')
+const getCustomPosts = function getPosts(postType, relativePath, baseSlug, asFeed) {
+  const postDir = path.resolve(__dirname, relativePath)
   return fs
     .readdirSync(postDir)
     .map((file) => {
@@ -11,9 +11,9 @@ exports.getPosts = function getPosts(asFeed = false) {
       const { data, excerpt } = matter(src, { excerpt: true })
       const post = {
         title: data.title,
-        href: `/posts/${file.replace(/\.md$/, '.html')}`,
-        date: formatDate(data.date),
-        type: 'post',
+        href: `${baseSlug}/${file.replace(/\.md$/, '.html')}`,
+        date: typeof data.date !== 'undefined' ? formatDate(data.date) : undefined,
+        type: postType,
         excerpt
       }
       if (asFeed) {
@@ -24,6 +24,10 @@ exports.getPosts = function getPosts(asFeed = false) {
       return post
     })
     .sort((a, b) => b.date.time - a.date.time)
+}
+
+exports.getPosts = function getPosts(asFeed = false) {
+  return getCustomPosts('post', '../posts', '/posts', asFeed)
 }
 
 exports.getPages = function getPages() {

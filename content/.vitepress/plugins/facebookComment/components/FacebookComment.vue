@@ -1,9 +1,9 @@
 <template>
-  <div class="fb-comments" :data-href="postURL" :data-width="width" :data-numposts="numberOfPosts" />
+  <div v-show="isLoaded" class="fb-comments" :data-href="postURL" :data-width="width" :data-numposts="numberOfPosts" />
 </template>
 
 <script setup>
-import { defineProps, onMounted } from 'vue'
+import { defineProps, onMounted, nextTick, ref } from 'vue'
 import { useSiteData } from 'vitepress'
 
 const initFacebookCommentPlugin = (pluginConfig) => {
@@ -42,7 +42,13 @@ const props = defineProps({
   numberOfPosts: Number,
 })
 
-const pluginConfig = useSiteData().value.themeConfig.facebookComment
+const pluginConfig = useSiteData().value.themeConfig.plugins.facebookComment
 
-onMounted(() => initFacebookCommentPlugin(pluginConfig))
+const isLoaded = ref(false)
+
+onMounted(async () => {
+  initFacebookCommentPlugin(pluginConfig)
+  await nextTick()
+  isLoaded.value = true
+})
 </script>
