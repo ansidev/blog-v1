@@ -24,7 +24,7 @@ Error: Cannot find module 'dist/manifest/client.json'
 
 # Giải pháp
 
-Set biến môi trường NODE_ENV=production
+Set biến môi trường `NODE_ENV`=`production`
 
 ```bash
 NODE_ENV=production npm run build
