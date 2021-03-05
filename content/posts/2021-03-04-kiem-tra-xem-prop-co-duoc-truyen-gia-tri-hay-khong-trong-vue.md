@@ -24,7 +24,6 @@ Trong quá trình phát triển ứng dụng với Vue, đôi khi bạn sẽ c�
 Chúng ta có component Foo.vue
 
 ```js
-
 export default {
   name: 'Foo',
   props: {
