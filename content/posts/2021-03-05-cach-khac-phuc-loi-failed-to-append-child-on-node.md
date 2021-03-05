@@ -1,7 +1,7 @@
 ---
 type: post
 title: Cách khắc phục lỗi Failed to execute 'appendChild' on 'Node'
-date: 2021-03-04T16:10:03+07:00
+date: 2021-03-05T16:10:03+07:00
 author: ansidev
 gravatar: a2ac3c4477e717c7fa15041d907e71fd
 twitter: '@ansidev'
