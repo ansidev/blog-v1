@@ -2,9 +2,9 @@
   <div class="antialiased">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <nav class="flex justify-between items-center py-10 font-bold">
-        <a class="text-xl" href="/" aria-label="ansidev 's blog">
+        <a class="text-xl" href="/" aria-label="ansidev's blog">
           <img class="inline-block mr-2" style="width:36px" alt="logo" src="/logo.jpg" />
-          <span v-if="!isIndex" class="hidden md:inline">ansidev 's blog</span>
+          <span v-if="!isIndex" class="hidden md:inline">ansidev's blog</span>
         </a>
         <div class="flex text-base text-gray-500 leading-5">
           <a class="flex hover:text-gray-700 mr-4" href="/feed.rss">
