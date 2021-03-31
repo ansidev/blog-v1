@@ -155,7 +155,6 @@ const provider = computed(() => {
 
 const networkName = computed(() => provider.value.name)
 const networkIcon = computed(() => provider.value.icon)
-
 const shareURL = computed(() => {
   const url = provider.value.shareBaseURL
   const urlQueryParams = buildUrlQueryParams(provider.value.params)

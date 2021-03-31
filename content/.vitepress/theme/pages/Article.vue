@@ -41,6 +41,7 @@
           <a class="link" href="/">← Back to the blog</a>
         </div>
       </footer>
+      <MediumZoom />
     </div>
   </article>
 </template>
@@ -50,9 +51,6 @@ import { computed } from 'vue'
 import { useFrontmatter, useSiteData, useRoute } from 'vitepress'
 import Date from '../components/Date.vue'
 import Author from '../components/Author.vue'
-import FacebookComment from '../../plugins/facebookComment/components/FacebookComment.vue'
-import Sharing from '../../plugins/share/components/Sharing.vue'
-// import { directive as MediumZoom } from '../../plugins/mediumZoom/MediumZoom'
 
 const data = useFrontmatter()
 const route = useRoute()

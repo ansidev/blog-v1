@@ -1,4 +1,4 @@
-import { computed } from 'vue'
+import { computed, h, onMounted, onUpdated, onUnmounted } from 'vue'
 import { useSiteData } from 'vitepress'
 import mediumZoom from 'medium-zoom'
 
@@ -17,6 +17,7 @@ const options = computed(() => hasPluginConfig && typeof pluginConfig.options ==
 let zoom = null
 
 const updateZoom = () => {
+  console.log('updateZoom')
   setTimeout(() => {
     if (zoom) {
       zoom.detach()
@@ -25,4 +26,17 @@ const updateZoom = () => {
   }, 1000)
 }
 
-export const directive = { mounted: updateZoom, updated: updateZoom }
+export default {
+  setup() {
+    onMounted(updateZoom)
+    onUpdated(updateZoom)
+    onUnmounted(() => {
+      console.log('unmounted')
+      if (zoom) {
+        zoom.detach()
+      }
+    })
+
+    return () => h('div')
+  }
+}

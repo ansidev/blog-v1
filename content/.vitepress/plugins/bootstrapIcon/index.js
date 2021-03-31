@@ -1,3 +1,4 @@
+import { defineAsyncComponent } from 'vue'
 import { bootstrapIcons } from './icons'
 import { getBootstrapIconComponentOptions } from './utils'
 
