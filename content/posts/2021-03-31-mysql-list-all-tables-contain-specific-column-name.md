@@ -27,7 +27,7 @@ SELECT DISTINCT
 FROM
   information_schema.columns
 WHERE
-  table_schema = 'schema_name';
+  table_schema = 'schema_name'
   AND column_name IN('column_name_01', 'column_name_02')
 ```
 
