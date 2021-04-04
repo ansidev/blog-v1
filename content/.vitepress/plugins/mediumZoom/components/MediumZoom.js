@@ -17,7 +17,6 @@ const options = computed(() => hasPluginConfig && typeof pluginConfig.options ==
 let zoom = null
 
 const updateZoom = () => {
-  console.log('updateZoom')
   setTimeout(() => {
     if (zoom) {
       zoom.detach()
@@ -31,7 +30,6 @@ export default {
     onMounted(updateZoom)
     onUpdated(updateZoom)
     onUnmounted(() => {
-      console.log('unmounted')
       if (zoom) {
         zoom.detach()
       }
