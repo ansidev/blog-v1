@@ -5,9 +5,9 @@ import Layout from './Layout.vue'
 
 export default {
   Layout,
-  enhanceApp({ app }) {
+  enhanceApp(context) {
     Object.values(import.meta.globEager(`../plugins/**/index.js`)).map(plugin => {
-      plugin.default({ app })
+      plugin.default(context)
     })
   }
 }

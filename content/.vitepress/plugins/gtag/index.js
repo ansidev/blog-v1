@@ -1,12 +1,10 @@
-import { useSiteData } from 'vitepress'
 import VueGtag from "vue-gtag-next"
 
-const gtag = useSiteData().value.themeConfig.plugins.gtag
-
-export default ({ app }) => {
+export default ({ app, siteData }) => {
+  const gtagId = siteData?.value?.themeConfig?.plugins?.gtag?.id
   app.use(VueGtag, {
     property: {
-      id: gtag.id
+      id: gtagId
     }
   })
 }
