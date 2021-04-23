@@ -11,7 +11,7 @@ categories:
   - MySQL
   - Tips and tricks
 tags:
-  - databse
+  - database
   - mysql
 ---
 
