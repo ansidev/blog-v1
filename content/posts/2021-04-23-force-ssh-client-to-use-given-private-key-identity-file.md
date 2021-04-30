@@ -36,3 +36,15 @@ If you added some SSH keys into ssh-agent, you need to add parameter `-o "Identi
 ```shell
 ssh -o "IdentitiesOnly=yes" -i /path/to/private_key -p port_number user@server
 ```
+
+# SSH Config File
+
+```
+Host server_name
+  HostName server_ip_address
+  User user
+  Port port_number
+  # Add config here
+  IdentitiesOnly yes
+  IdentityFile /path/to/private_key
+```
